@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Booking Invoice</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f3f6;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    p {
+      margin: 5px 0;
+    }
+    .product-details {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .product-details img {
+      max-width: 100%;
+      height: auto;
+    }
+    .product-details h3 {
+      margin: 10px 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .product-details p {
+      font-size: 14px;
+    }
+    .button-container {
+      text-align: center;
+    }
+    .print-button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .rent-button {
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .rent-button[disabled] {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .total-price {
+      text-align: right;
+      font-weight: bold;
+      margin-top: 10px;
+  }
+
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Function to print the page
+      function printPage() {
+        window.print();
+      }
+
+      // Attach click event to the "Print" button
+      $('#print-button').click(function() {
+        printPage();
+      });
+
+      // Change the "Rent It" button text to "Rented" after clicking
+      $('#rent-button').click(function() {
+        $(this).text('Rented');
+        $(this).attr('disabled', 'disabled');
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Booking Invoice</h1>
+
+    <div class="product-details">
+      <img src="{{ car.image.url }}" alt="{{ car.model }}">
+      <h3>{{ cart_item.car.model }}</h3>
+      <div class="total-price">Total:  BDT {{total_price}}</div>
+    </div>
+    
+    <div class="button-container">
+      <button id="print-button" class="print-button">Print</button>
+    </div>
+  </div>
+</body>
+</html>
