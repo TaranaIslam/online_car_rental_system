@@ -1,75 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <style>
-        
-        .container {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 10;
-            padding-top:60px;
-            display: flex;
-            justify-content: center;
-            align-items: top;
-            height: 100vh;
-            
-        }
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;
+    background-image: url('https://images.unsplash.com/photo-1638731042030-2f298bdb931b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YWlycG9ydCUyMGNhcnxlbnwwfHwwfHx8MA%3D%3D');
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    height: 109vh;
+}
+form {border: 3px solid #f1f1f1; width:300px; height:300px; align:center;
+}
 
-        .form-group {
-            margin-bottom: 20px;
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  
+}
 
-        }
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
 
-        label {
-            font-weight: bold;
-        }
+button:hover {
+  opacity: 0.8;
+}
 
-        input[type="text"],
-        input[type="password"] {
-            width: 60%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 26px;
-        }
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
 
-        button[type="submit"] {
-            padding: 15px 50px;
-            background-color: #4267B2;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            margin:center;
-            margin-left:200px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
 
-        button[type="submit"]:hover {
-            background-color: #385898;
-        }
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
 
-        .error-message {
-            color: red;
-            margin-top: 10px;
-        }
-    </style>
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+label{text-align: left;} 
+</style>
 </head>
-
-<body>
-    <header style="background-size: cover; background-position: center; background-color:#385898; color: white; text-align: center; padding: 5px;border: none;
-    border-radius: 8px;">
-        <h1>Welcome to Car Rental</h1>
-
-    </header>
-    
-    <center>
-        <h1>Login</h1>
-    </center>
+<body >
     <center>
         <p style="color: tomato;">
             {% if messages %}
@@ -79,25 +85,26 @@
             {% endif %}
         </p>
     </center>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <form method="POST" action="{% url 'login' %}">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="id_username">Username</label>
-                        <input type="text" name="username" id="id_username" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="id_password">Password</label>
-                        <input type="password" name="password" id="id_password" class="form-control" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Log In</button>
-                </form>
-            </div><br>
-            <a href="{% url 'register' %}">Register Here</a>
-        </div>
-    </div>
-</body>
+        <br><br><br><br>
 
+<center>
+    <font size="8px">Log In</font><br><br>
+<br>
+<form  method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    <br>
+    <div class="form-group">
+        <label for="id_username" style="font-weight: bold;">Username</label>
+        <input type="text" name="username" id="id_username" class="form-control" placeholder="Enter Username" required>
+    </div>
+    <div class="form-group">
+        <label for="id_password"style="font-weight: bold;">Password</label>
+        <input type="password" name="password" id="id_password" class="form-control" placeholder="Enter Password" required>
+    </div>
+    <button type="submit" class="btn btn-primary"style="font-weight: bold;">Log In</button><br>
+<br>
+  <a href="{% url 'register' %}" style="color:white">Register</a>
+</form>
+</center>
+</body>
 </html>
